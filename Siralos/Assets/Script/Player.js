@@ -7,6 +7,11 @@ var boundaryVerTop:float = -4.5;
 var boundaryVerBottom:float = 4.5;
 var projectile:Transform;
 var projectileSocket:Transform;
+var scoreUnit:int = 1;
+
+// Private variables.
+static private var score:int = 0;
+static private var lives:int = 3; 
 
 function Update()
 {
@@ -25,4 +30,24 @@ function Update()
 	{
 		Instantiate(projectile, projectileSocket.transform.position, projectile.transform.rotation);
 	}
+}
+
+function incrementScore()
+{
+	score += scoreUnit;
+}
+
+function decrementLives()
+{
+	lives -= 1;
+}
+
+function getScore()
+{
+	return score;
+}
+
+function getLives()
+{
+	return lives;
 }
