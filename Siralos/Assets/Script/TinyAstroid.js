@@ -24,6 +24,14 @@ function Update()
 	{
 		Destroy(gameObject);
 	}
+	
+	if (player)
+	{
+		if (0 == player.GetComponent('Player').getLives())
+		{
+			Destroy(gameObject);
+		}
+	}
 }
 
 function OnTriggerEnter(other:Collider)

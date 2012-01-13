@@ -55,7 +55,10 @@ function OnTriggerEnter(other:Collider)
 	
 	if (other.tag.Equals('tinyAstroid'))
 	{
-		GameObject.Find('camMain').GetComponent('Level01').boss.GetComponent('Boss01').stopAttack();
+		if (GameObject.Find('camMain').GetComponent('Level01').boss)
+		{
+			GameObject.Find('camMain').GetComponent('Level01').boss.GetComponent('Boss01').stopAttack();
+		}
 	}
 	
 	if (0 == lives)
