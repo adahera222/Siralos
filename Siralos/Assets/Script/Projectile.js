@@ -1,5 +1,6 @@
 // Inspector variables.
 var speed:float = 5.0;
+var explosion:Transform;
 
 function Update()
 {
@@ -16,5 +17,6 @@ function OnTriggerEnter(other:Collider)
 	if (other.tag.Equals('astroid'))
 	{
 		Destroy(transform.gameObject);
+		Instantiate(explosion, transform.position, explosion.rotation);
 	}
 }
