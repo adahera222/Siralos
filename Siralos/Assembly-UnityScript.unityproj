@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\Astroid.js" />
+     <Compile Include="Assets\Script\Boss01.js" />
      <Compile Include="Assets\Script\Credits.js" />
      <Compile Include="Assets\Script\InGameMenu.js" />
      <Compile Include="Assets\Script\Instructions.js" />
@@ -59,6 +60,8 @@
      <Compile Include="Assets\Script\MainMenu\optNewGame.js" />
      <Compile Include="Assets\Script\Player.js" />
      <Compile Include="Assets\Script\Projectile.js" />
+     <Compile Include="Assets\Script\Stars.js" />
+     <Compile Include="Assets\Script\TinyAstroid.js" />
      <Compile Include="Assets\Script\Win.js" />
      <None Include="Assets\Player\Space Shooter\Info.txt" />
   </ItemGroup>

@@ -2,9 +2,11 @@
 var astroid:GameObject;
 var player:Player;
 var timeLimit:int = 60;
+var boss:Transform;
 
 // Private variables.
 private var timeLeft:int;
+private var bossCreated = false;
 
 function Start()
 {
@@ -26,9 +28,12 @@ function Start()
 
 function Update()
 {
-	if (timeLeft <= 0)
+	if (timeLeft <= 0 && !bossCreated)
 	{
-		Application.LoadLevel('Level02');
+		// introduce the boss.
+		Instantiate(boss, Vector3(6.0, 0.0, 0.0), transform.rotation);
+		
+		bossCreated = true;
 	}
 }
 
@@ -51,4 +56,9 @@ function countDown()
 	{
 		timeLeft = 0;
 	}
+}
+
+function getTimeLeft()
+{
+	return timeLeft;
 }
