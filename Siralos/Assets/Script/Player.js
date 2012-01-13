@@ -138,3 +138,10 @@ function getFinalScore()
 
 	return parseInt(fScore) * 2 + score;
 }
+
+function init()
+{
+	score = 0;
+	lives = 3;
+	shootingCount = 0;
+}

@@ -62,3 +62,8 @@ function getTimeLeft()
 {
 	return timeLeft;
 }
+
+function init()
+{
+	Start();
+}
