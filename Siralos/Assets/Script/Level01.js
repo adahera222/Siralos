@@ -28,8 +28,9 @@ function Start()
 
 function Update()
 {
-	if (timeLeft <= 0 && !bossCreated)
+	if (timeLeft <= 0 && ! bossCreated)
 	{
+	print('creating the boss: ' + bossCreated);
 		// introduce the boss.
 		boss = Instantiate(boss, Vector3(6.0, 0.0, 0.0), transform.rotation);
 		
@@ -47,6 +48,9 @@ function OnGUI()
 	
 	// time.
 	GUI.Label(Rect(550, 10, 100, 30), 'Time: ' + timeLeft);
+	
+	// time.
+	GUI.Label(Rect(550, 30, 100, 30), 'Level: 1');
 }
 
 function countDown()

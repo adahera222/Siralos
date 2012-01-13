@@ -2,6 +2,7 @@
 var tinyAstroid:Transform;
 var lives:int = 50;
 var explosion:Transform;
+var player:Player;
 
 // Private variables.
 private var direction:int = 1;
@@ -44,6 +45,15 @@ function OnTriggerEnter(other:Collider)
 		
 		// destroy the object.
 		Destroy(gameObject);
+		
+		// if the user is not dead;
+		if (player)
+		{
+			if (player.GetComponent('Player').getLives() > 0)
+			{
+				Application.LoadLevel('Level01Completed');
+			}
+		}
 	}
 }
 

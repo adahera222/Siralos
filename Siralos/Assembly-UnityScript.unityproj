@@ -50,7 +50,9 @@
      <Compile Include="Assets\Script\InGameMenu.js" />
      <Compile Include="Assets\Script\Instructions.js" />
      <Compile Include="Assets\Script\Level01.js" />
+     <Compile Include="Assets\Script\Level01Completed.js" />
      <Compile Include="Assets\Script\Level02.js" />
+     <Compile Include="Assets\Script\Level02Completed.js" />
      <Compile Include="Assets\Script\Level03.js" />
      <Compile Include="Assets\Script\Lose.js" />
      <Compile Include="Assets\Script\MainMenu.js" />

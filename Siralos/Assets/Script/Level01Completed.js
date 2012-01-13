@@ -16,7 +16,11 @@ function OnGUI()
 	GUI.Label(Rect(250, 240, 150, 30), 'Final Score .. : ' + player.getFinalScore());
 	
 	// show the buttons.
-	if (GUI.Button(Rect(235, 300, 150, 30), 'Back to Main Menu'))
+	if (GUI.Button(Rect(235, 300, 150, 30), 'Next Level'))
+	{
+		Application.LoadLevel('Level02');
+	}
+	if (GUI.Button(Rect(235, 340, 150, 30), 'Back to Main Menu'))
 	{
 		Application.LoadLevel('MainMenu');
 	}

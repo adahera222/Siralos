@@ -63,6 +63,10 @@ function OnTriggerEnter(other:Collider)
 	
 	if (0 == lives)
 	{
+		if (GameObject.Find('camMain').GetComponent('Level01').boss)
+		{
+			Destroy(GameObject.Find('camMain').GetComponent('Level01').boss.gameObject);
+		}
 		yield WaitForSeconds(2.0);
 		Application.LoadLevel('Lose');
 	}
