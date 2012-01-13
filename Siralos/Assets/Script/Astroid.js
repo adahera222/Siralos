@@ -32,6 +32,10 @@ function OnTriggerEnter(other:Collider)
 	{
 		reset();
 	}
+	else if (other.tag.Equals('player'))
+	{
+		reset();
+	}
 }
 
 function reset()

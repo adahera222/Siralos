@@ -1,6 +1,10 @@
 // Inspector variables.
 var player:Transform;
 var speed:float = 5.0;
+var boundaryHorLeft:float = -6.0;
+var boundaryHorRight:float = 6.0;
+var boundaryVerTop:float = -4.5;
+var boundaryVerBottom:float = 4.5;
 
 // Private variables.
 var targetX:float;
@@ -15,11 +19,20 @@ function Start()
 function Update()
 {
 	transform.Translate(-1 * speed * Time.deltaTime, 0.0, 0.0);
+	
+	if (outOfBounds())
+	{
+		Destroy(gameObject);
+	}
 }
 
 function OnTriggerEnter(other:Collider)
 {
 	if (other.tag.Equals('projectile'))
+	{
+		Destroy(gameObject);
+	}
+	else if (other.tag.Equals('player'))
 	{
 		Destroy(gameObject);
 	}
@@ -33,4 +46,9 @@ function calculateTransformValueForX()
 function calculateTransformValueForY()
 {
 	return Time.deltaTime * ((targetY - transform.position.y));
+}
+
+function outOfBounds()
+{
+	return (transform.position.x <= boundaryHorLeft || transform.position.x >= boundaryHorRight);
 }

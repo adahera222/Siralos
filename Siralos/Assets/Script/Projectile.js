@@ -16,7 +16,7 @@ function Update()
 
 function OnTriggerEnter(other:Collider)
 {
-	if (other.tag.Equals('astroid'))
+	if (other.tag.Equals('astroid') || other.tag.Equals('tinyAstroid'))
 	{
 		// add score to the player.
 		player.incrementScore();

@@ -4,12 +4,11 @@ var lives:int = 50;
 var explosion:Transform;
 
 // Private variables.
-var direction:int = 1;
+private var direction:int = 1;
 
 function Start()
 {
-	// start the timer.
-	InvokeRepeating('throwAstroids', 6.0, 3.0);
+	startAttack(3.0);
 }
 
 function Update()
@@ -37,10 +36,9 @@ function OnTriggerEnter(other:Collider)
 	{
 		lives -= 1;
 	}
-	print ('she ' + lives);
+
 	if (lives <= 0)
 	{
-		print ('he ' + lives);
 		// show the explosion.
 		Instantiate(explosion, transform.position, transform.rotation);
 		
@@ -56,4 +54,14 @@ function throwAstroids()
 		var position:Vector3 = Vector3(transform.position.x, Random.Range(transform.position.y - (0.5 * i), transform.position.y + (0.5 * i)) , 0.0);
 		Instantiate(tinyAstroid, position, transform.rotation);
 	}
+}
+
+function stopAttack()
+{
+	CancelInvoke();
+}
+
+function startAttack(time:float)
+{
+	InvokeRepeating('throwAstroids', time, 3.0);
 }
