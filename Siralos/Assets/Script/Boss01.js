@@ -3,6 +3,7 @@ var tinyAstroid:Transform;
 var lives:int = 50;
 var explosion:Transform;
 var player:Player;
+var sceneManager:Camera;
 
 // Private variables.
 private var direction:int = 1;
@@ -14,21 +15,24 @@ function Start()
 
 function Update()
 {
-	if (transform.position.x >= 2.8)
+	if (sceneManager.transform.GetComponent(player.GetComponent('Player').getLevelName()).getTimeLeft() <= 2)
 	{
-		transform.Translate(-1.0 * Time.deltaTime, 0.0, 0.0);
+		if (transform.position.x >= 2.8)
+		{
+			transform.Translate(-1.0 * Time.deltaTime, 0.0, 0.0);
+		}
+		
+		if (transform.position.y <= -2.0)
+		{
+			direction = 1;
+		}
+		else if (transform.position.y >= 2.0)
+		{
+			direction = -1;
+		}
+		
+		transform.Translate(0.0, 0.1 * direction * Time.deltaTime, 0.0);
 	}
-	
-	if (transform.position.y <= -2.0)
-	{
-		direction = 1;
-	}
-	else if (transform.position.y >= 2.0)
-	{
-		direction = -1;
-	}
-	
-	transform.Translate(0.0, 0.1 * direction * Time.deltaTime, 0.0);
 }
 
 function OnTriggerEnter(other:Collider)
@@ -42,6 +46,11 @@ function OnTriggerEnter(other:Collider)
 	{
 		// show the explosion.
 		Instantiate(explosion, transform.position, transform.rotation);
+
+		transform.position.x = 10.0;
+
+		// wait for 4 seconds.
+		yield WaitForSeconds(4.0);
 		
 		// destroy the object.
 		Destroy(gameObject);
@@ -51,7 +60,14 @@ function OnTriggerEnter(other:Collider)
 		{
 			if (player.GetComponent('Player').getLives() > 0)
 			{
-				Application.LoadLevel(player.GetComponent('Player').getLevelName() + 'Completed');
+				if ('Level03' == player.GetComponent('Player').getLevelName())
+				{
+					Application.LoadLevel('Win');
+				}
+				else
+				{
+					Application.LoadLevel(player.GetComponent('Player').getLevelName() + 'Completed');
+				}
 			}
 		}
 	}

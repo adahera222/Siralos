@@ -10,6 +10,15 @@ var levelName:String;
 
 function Update()
 {
+	if ('Level02' == levelName)
+	{
+		speedX = 1.2;
+	}
+	else if ('Level02' == levelName)
+	{
+		speedX = 1.5;
+	}
+
 	if (transform.position.x <= boundaryHorLeft)
 	{
 		reset();

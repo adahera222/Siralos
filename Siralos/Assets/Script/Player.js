@@ -14,6 +14,7 @@ var levelName:String;
 
 // Private variables.
 static private var score:int = 0;
+static private var score2:int = 0;
 static private var lives:int = 3;
 static private var shootingCount:int = 0; 
 private var isDead = false;
@@ -111,7 +112,7 @@ function getLives()
 
 function getAccuracy()
 {
-	var fScore:float = score;
+	var fScore:float = score2;
 	
 	if (fScore == 0.0)
 	{
@@ -150,6 +151,7 @@ function getFinalScore()
 function init()
 {
 	score = 0;
+	score2 = 0;
 	lives = 3;
 	shootingCount = 0;
 }
@@ -157,4 +159,9 @@ function init()
 function getLevelName()
 {
 	return levelName;
+}
+
+function setScore(newScore:int)
+{
+	score = newScore;
 }

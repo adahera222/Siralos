@@ -18,6 +18,9 @@ function OnGUI()
 	// show the buttons.
 	if (GUI.Button(Rect(235, 300, 150, 30), 'Next Level'))
 	{
+		// update the score.
+		player.GetComponent('Player').setScore(player.getFinalScore());
+		
 		Application.LoadLevel('Level02');
 	}
 	if (GUI.Button(Rect(235, 340, 150, 30), 'Back to Main Menu'))

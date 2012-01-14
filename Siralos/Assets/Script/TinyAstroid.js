@@ -7,49 +7,43 @@ var boundaryVerTop:float = -4.5;
 var boundaryVerBottom:float = 4.5;
 
 // Private variables.
-var targetX:float;
-var targetY:float;
+private var targetX:float;
+private var targetY:float;
+private var transformY:float;
 
 function Start()
 {
 	targetX = -4.0;
 	targetY = transform.position.y;
+	transformY = 0.0;
+	if ('Level03' == Application.loadedLevelName)
+	{	
+		if (Random.Range(0, 100) >= 50)
+		{
+			transformY = -1.0 * Time.deltaTime;
+		}
+		else
+		{
+			transformY = 1.0 * Time.deltaTime;
+		}
+	}
 }
 
 function Update()
 {
-	if (player && player.GetComponent('Player').getLevelName())
+	if ('Level02' == Application.loadedLevelName)
 	{
-		if ('Level02' == player.GetComponent('Player').getLevelName())
-		{
-			speed = 4.0;
-		}
-		else if ('Level03' == player.GetComponent('Player').getLevelName())
-		{
-			speed = 5.0;
-		}
-		else
-		{
-			speed = 3.0;
-		}
+		speed = 4.0;
 	}
-	
-	var transformY:float = 0.0;
-	if (player && player.GetComponent('Player').getLevelName())
+	else if ('Level03' == Application.loadedLevelName )
 	{
-		if ('Level03' == player.GetComponent('Player').getLevelName())
-		{
-			if (Random.Range(0, 100) >= 50)
-			{
-				transformY = -1.0 * Time.deltaTime;
-			}
-			else
-			{
-				transformY = 1.0 * Time.deltaTime;
-			}
-		}
+		speed = 5.0;
 	}
-	
+	else
+	{
+		speed = 3.0;
+	}
+
 	transform.Translate(-1 * speed * Time.deltaTime, transformY, 0.0);
 	
 	if (outOfBounds())
