@@ -30,9 +30,8 @@ function Update()
 {
 	if (timeLeft <= 0 && ! bossCreated)
 	{
-	print('creating the boss: ' + bossCreated);
 		// introduce the boss.
-		boss = Instantiate(boss, Vector3(6.0, 0.0, 0.0), transform.rotation);
+		//boss = Instantiate(boss, Vector3(6.0, 0.0, 0.0), transform.rotation);
 		
 		bossCreated = true;
 	}

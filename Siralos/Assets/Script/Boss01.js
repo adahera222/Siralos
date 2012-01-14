@@ -51,7 +51,7 @@ function OnTriggerEnter(other:Collider)
 		{
 			if (player.GetComponent('Player').getLives() > 0)
 			{
-				Application.LoadLevel('Level01Completed');
+				Application.LoadLevel(player.GetComponent('Player').getLevelName() + 'Completed');
 			}
 		}
 	}
@@ -59,7 +59,19 @@ function OnTriggerEnter(other:Collider)
 
 function throwAstroids()
 {
-	for (var i:int = 0; i < 4; i++ )
+	var iLimit:int;
+	if (player && player.GetComponent('Player').getLevelName())
+	{
+		if ('Level02' == player.GetComponent('Player').getLevelName())
+		{
+			iLimit = 6;
+		}
+		else
+		{
+			iLimit = 4;
+		}
+	}
+	for (var i:int = 0; i < iLimit; i++ )
 	{
 		var position:Vector3 = Vector3(transform.position.x, Random.Range(transform.position.y - (0.5 * i), transform.position.y + (0.5 * i)) , 0.0);
 		Instantiate(tinyAstroid, position, transform.rotation);

@@ -6,6 +6,7 @@ var boundaryHorRight:float = 6.0;
 var boundaryVerTop:float = -4.5;
 var boundaryVerBottom:float = 4.5;
 var sceneManager:Camera;
+var levelName:String;
 
 function Update()
 {
@@ -19,7 +20,7 @@ function Update()
 	if (outOfBounds())
 	{
 		// if the time is finished, destroy the astroid.
-		if (sceneManager.transform.GetComponent('Level01').getTimeLeft() <= 0)
+		if (sceneManager.transform.GetComponent(levelName).getTimeLeft() <= 0)
 		{
 			Destroy(gameObject);
 		}

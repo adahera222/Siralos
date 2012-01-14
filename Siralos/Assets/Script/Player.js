@@ -10,6 +10,7 @@ var projectileSocket:Transform;
 var scoreUnit:int = 1;
 var explosion:Transform;
 var guiLoseStyle:GUIStyle;
+var levelName:String;
 
 // Private variables.
 static private var score:int = 0;
@@ -55,17 +56,17 @@ function OnTriggerEnter(other:Collider)
 	
 	if (other.tag.Equals('tinyAstroid'))
 	{
-		if (GameObject.Find('camMain').GetComponent('Level01').boss)
+		if (GameObject.Find('camMain').GetComponent(levelName).boss)
 		{
-			GameObject.Find('camMain').GetComponent('Level01').boss.GetComponent('Boss01').stopAttack();
+			GameObject.Find('camMain').GetComponent(levelName).boss.GetComponent('Boss01').stopAttack();
 		}
 	}
 	
 	if (0 == lives)
 	{
-		if (GameObject.Find('camMain').GetComponent('Level01').boss)
+		if (GameObject.Find('camMain').GetComponent(levelName).boss)
 		{
-			Destroy(GameObject.Find('camMain').GetComponent('Level01').boss.gameObject);
+			Destroy(GameObject.Find('camMain').GetComponent(levelName).boss.gameObject);
 		}
 		yield WaitForSeconds(2.0);
 		Application.LoadLevel('Lose');
@@ -92,9 +93,9 @@ function respawn()
 	transform.position.x = boundaryHorLeft + 1.0;
 	isDead = false;
 	
-	if (GameObject.Find('camMain').GetComponent('Level01').boss)
+	if (GameObject.Find('camMain').GetComponent(levelName).boss)
 	{
-		GameObject.Find('camMain').GetComponent('Level01').boss.GetComponent('Boss01').startAttack(1.0);
+		GameObject.Find('camMain').GetComponent(levelName).boss.GetComponent('Boss01').startAttack(1.0);
 	}
 }
 
@@ -151,4 +152,9 @@ function init()
 	score = 0;
 	lives = 3;
 	shootingCount = 0;
+}
+
+function getLevelName()
+{
+	return levelName;
 }

@@ -1,6 +1,6 @@
 // Inspector variables.
 var player:Transform;
-var speed:float = 5.0;
+var speed:float = 3.0;
 var boundaryHorLeft:float = -6.0;
 var boundaryHorRight:float = 6.0;
 var boundaryVerTop:float = -4.5;
@@ -18,6 +18,19 @@ function Start()
 
 function Update()
 {
+	if (player && player.levelName)
+	{
+	print(player.levelName);
+		if ('Level02' == player.levelName)
+		{
+			speed = 5.0;
+		}
+		else
+		{
+			speed = 3.0;
+		}
+	}
+	
 	transform.Translate(-1 * speed * Time.deltaTime, 0.0, 0.0);
 	
 	if (outOfBounds())
