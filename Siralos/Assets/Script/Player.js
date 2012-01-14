@@ -82,6 +82,7 @@ function incrementScore()
 {
 	// increment the score.
 	score += scoreUnit;
+	score2 += 1;
 }
 
 function decrementLives()
