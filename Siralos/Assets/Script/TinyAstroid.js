@@ -18,10 +18,13 @@ function Start()
 
 function Update()
 {
-	if (player && player.levelName)
+	if (player && player.GetComponent('Player').getLevelName())
 	{
-	print(player.levelName);
-		if ('Level02' == player.levelName)
+		if ('Level02' == player.GetComponent('Player').getLevelName())
+		{
+			speed = 4.0;
+		}
+		else if ('Level03' == player.GetComponent('Player').getLevelName())
 		{
 			speed = 5.0;
 		}
@@ -31,7 +34,23 @@ function Update()
 		}
 	}
 	
-	transform.Translate(-1 * speed * Time.deltaTime, 0.0, 0.0);
+	var transformY:float = 0.0;
+	if (player && player.GetComponent('Player').getLevelName())
+	{
+		if ('Level03' == player.GetComponent('Player').getLevelName())
+		{
+			if (Random.Range(0, 100) >= 50)
+			{
+				transformY = -1.0 * Time.deltaTime;
+			}
+			else
+			{
+				transformY = 1.0 * Time.deltaTime;
+			}
+		}
+	}
+	
+	transform.Translate(-1 * speed * Time.deltaTime, transformY, 0.0);
 	
 	if (outOfBounds())
 	{

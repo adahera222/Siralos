@@ -59,16 +59,12 @@ function OnTriggerEnter(other:Collider)
 
 function throwAstroids()
 {
-	var iLimit:int;
+	var iLimit:int = 4;
 	if (player && player.GetComponent('Player').getLevelName())
 	{
-		if ('Level02' == player.GetComponent('Player').getLevelName())
+		if ('Level02' == player.GetComponent('Player').getLevelName() || 'Level03' == player.GetComponent('Player').getLevelName())
 		{
 			iLimit = 6;
-		}
-		else
-		{
-			iLimit = 4;
 		}
 	}
 	for (var i:int = 0; i < iLimit; i++ )
